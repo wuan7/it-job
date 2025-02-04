@@ -47,6 +47,7 @@ const JobCard = () => {
       }));
       setJobList(updatedJobList);
     }
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [savedJobIds]);
 
   const handleToggleSavedJob = async (jobId: string) => {

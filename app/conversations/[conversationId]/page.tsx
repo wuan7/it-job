@@ -88,7 +88,6 @@ const ConversationPage = () => {
             <div className="flex-grow">
                 <MessageList 
                 messages={messages}
-                  messageCreationTime={conversation.createdAt}
                 />
             </div>
           </div>

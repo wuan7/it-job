@@ -60,6 +60,7 @@ const JobPage = () => {
 
   useLayoutEffect(() => {
     checkAndGetLatestSubmission();
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [jobId]);
   
 

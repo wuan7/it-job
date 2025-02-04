@@ -4,9 +4,8 @@ import { vi } from "date-fns/locale";
 import { Message as MessageType } from "@/constants";
 interface MessageListProps {
   messages: MessageType[];
-  messageCreationTime: Date;
 }
-const MessageList = ({ messages, messageCreationTime }: MessageListProps) => {
+const MessageList = ({ messages }: MessageListProps) => {
   const formatDateLable = (dateStr: Date) => {
     const date = new Date(dateStr);
     if (isToday(date)) return "Hôm nay";

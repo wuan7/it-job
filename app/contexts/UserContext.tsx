@@ -46,6 +46,7 @@ export const UserProvider = ({ children }: { children: React.ReactNode }) => {
 
   useLayoutEffect(() => {
     fetchCurrentUser();
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   return (

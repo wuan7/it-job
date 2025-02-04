@@ -5,7 +5,6 @@ import UserAvatar from "./UserAvatar";
 import Sidebar from "./Sidebar";
 import { useUserContext } from "@/app/contexts/UserContext";
 import NotificationButton from "./NotificationButton";
-import MessageButton from "./MessageButton";
 const Navbar = () => {
   const { user } = useUserContext();
  
