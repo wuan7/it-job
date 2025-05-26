@@ -361,25 +361,7 @@ export const RegisterForm = ({ setState }: RegisterFormProps) => {
         >
           Đăng ký
         </Button>
-        <p className="text-center text-sm text-zinc-600">Hoặc đang nhập bằng</p>
-        <div className="flex gap-x-2">
-          <Button
-            className="w-full bg-[#3B5998] hover:bg-[#3B5998]/80 !text-white"
-            variant={"transparent"}
-            type="submit"
-            disabled={isLoading}
-          >
-            Facebook
-          </Button>
-          <Button
-            className="w-full bg-[#4285F4] hover:bg-[#4285F4]/80 !text-white"
-            variant={"transparent"}
-            type="submit"
-            disabled={isLoading}
-          >
-            Google
-          </Button>
-        </div>
+        
         <p className="text-center text-sm text-zinc-600">
           Bạn đã có tài khoản?{" "}
           <span
