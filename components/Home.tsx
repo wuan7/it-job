@@ -24,7 +24,7 @@ const HomeLayout = () => {
   useEffect(() => {
     const fetchBackendUp = async () => {
       const response = await fetch(
-        process.env.BACKEND_URL || "https://it-job-1.onrender.com/api/v1"
+        process.env.RENDER_URL || "https://it-job-1.onrender.com"
       );
       if (response.ok) {
         toast.success("Backend is up and running");
