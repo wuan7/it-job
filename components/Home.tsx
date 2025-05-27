@@ -20,12 +20,14 @@ const HomeLayout = () => {
     searchQuery: "",
   });
   const [currentPage, setCurrentPage] = useState(1);
-  const [loading, setLoading] = useState(true);
+  const [loading, setLoading] = useState(false);
   const [backendReady, setBackendReady] = useState(false);
 
   useEffect(() => {
     const fetchBackendUp = async () => {
       try {
+        setLoading(true);
+        toast.info("Đang kết nối đến server render...");
         const response = await fetch(
           process.env.RENDER_URL || "https://it-job-1.onrender.com"
         );
@@ -37,6 +39,8 @@ const HomeLayout = () => {
       } catch (error) {
         console.log(error)
         toast.error("Lỗi khi kết nối đến server");
+      } finally {
+        setLoading(false);
       }
     };
     fetchBackendUp();
