@@ -11,6 +11,7 @@ type FiltersType = {
   experience?: string;
   searchQuery?: string;
 };
+
 const HomeLayout = () => {
   const [filters, setFilters] = useState<FiltersType>({
     location: "",
@@ -20,20 +21,27 @@ const HomeLayout = () => {
   });
   const [currentPage, setCurrentPage] = useState(1);
   const [loading, setLoading] = useState(true);
+  const [backendReady, setBackendReady] = useState(false);
 
   useEffect(() => {
     const fetchBackendUp = async () => {
-      const response = await fetch(
-        process.env.RENDER_URL || "https://it-job-1.onrender.com"
-      );
-      if (response.ok) {
-        toast.success("Backend is up and running");
-      } else {
-        toast.error("Backend is down");
+      try {
+        const response = await fetch(
+          process.env.RENDER_URL || "https://it-job-1.onrender.com"
+        );
+        if (response.ok) {
+          setBackendReady(true);
+        } else {
+          toast.error("Backend is down");
+        }
+      } catch (error) {
+        console.log(error)
+        toast.error("Lỗi khi kết nối đến server");
       }
     };
     fetchBackendUp();
   }, []);
+
   const handleFilterChange = (newFilters: FiltersType) => {
     setFilters(newFilters);
     setCurrentPage(1);
@@ -60,8 +68,14 @@ const HomeLayout = () => {
       setLoading(false);
     }
   }, [currentPage, filters]);
-  const { data: jobs, error } = useApi(fetchJobPost);
-  console.log("jobs", jobs);
+
+  const { data: jobs, error, refetch } = useApi(fetchJobPost);
+
+  useEffect(() => {
+    if (backendReady) {
+      refetch();
+    }
+  }, [backendReady, refetch]);
 
   return (
     <>
